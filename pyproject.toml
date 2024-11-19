@@ -1,0 +1,16 @@
+[project]
+name = "llm-pipelines-demo"
+version = "1.0.0"
+description = "Demo of local and remote pipelines for calling and evaluating LLMs using Kubeflow and Vertex AI."
+readme = "README.md"
+requires-python = "~=3.12"
+dependencies = [
+    "google-cloud-aiplatform>=1.72.0",
+    "kfp>=2.10.1",
+    "typer>=0.13.1",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.7.4",
+]
