@@ -24,8 +24,8 @@ source .venv/bin/activate
 ```
 
 ## Google Cloud
-If you haven't already, [create a Google Cloud account and project](https://console.cloud.google.com/getting-started)
-[install the Google Cloud SDK](https://cloud.google.com/sdk/docs/install) `gcloud`, and authenticate with GCP:
+If you haven't already, [create a Google Cloud account and project](https://console.cloud.google.com/getting-started), 
+then [install the Google Cloud SDK](https://cloud.google.com/sdk/docs/install) `gcloud`, and authenticate with GCP:
 ```shell
 gcloud auth login --update-adc
 ```
@@ -40,10 +40,10 @@ Storage Object User
 Vertex AI User
 ````
 
-- Create a new Docker repository `demo-repo` in `us-central1` region in [Artifact Registry](https://console.cloud.google.com/artifacts).
+- Create a new Docker repository `demo-repo` in `us-central1` region in the [Artifact Registry](https://console.cloud.google.com/artifacts).
 
-- Finally. Add your project ID (e.g. `plasma-set-442915-a1`), repository name and SA name to `pipelines/config.cfg`:
-```cfg
+- Finally,  add your project ID (e.g. `plasma-set-442915-a1`), repository name and SA name to `pipelines/config.cfg`:
+```
 [job_constants]
 gcp_project = plasma-set-442915-a1
 sa_name = demo-sa
@@ -62,6 +62,7 @@ and trigger a local pipeline with
 python pipelines/demo.py
 ```
 
+The pipeline outputs are saved in `./local_outputs/`.
 
 # Remote pipeline on Vertex AI
 
