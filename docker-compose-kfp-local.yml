@@ -1,0 +1,10 @@
+services:
+  app:
+    image: kfp-component-local
+    build:
+      dockerfile: Dockerfile-kfp
+      target: local
+      context: .
+      args:
+        - ADC
+    restart: always

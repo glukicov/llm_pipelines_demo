@@ -1,10 +1,13 @@
 [project]
-name = "llm-pipelines-demo"
+name = "pipelines"
 version = "1.0.0"
-description = "Demo of local and remote pipelines for calling and evaluating LLMs using Kubeflow and Vertex AI."
-readme = "README.md"
 requires-python = "~=3.12"
+description = "Demo of local and remote pipelines for calling and evaluating LLMs using Kubeflow and Vertex AI."
+authors = [{name = "Gleb Lukicov"}]
+readme = "README.md"
+
 dependencies = [
+    "docker>=7.1.0",
     "google-cloud-aiplatform>=1.72.0",
     "kfp>=2.10.1",
     "typer>=0.13.1",
@@ -14,3 +17,13 @@ dependencies = [
 dev = [
     "ruff>=0.7.4",
 ]
+
+[tool.uv]
+package = true
+
+[project.scripts]
+build-local = "scripts.cli:build_container"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
