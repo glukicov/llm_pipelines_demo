@@ -1,38 +1,43 @@
 repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-yaml
+      - id: check-toml
+      - id: check-json
+      - id: pretty-format-json
+        args: ["--autofix"]
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: detect-private-key
+      - id: check-added-large-files
+        args: ["--maxkb=1000"]
+      - id: check-merge-conflict
+      - id: check-executables-have-shebangs
 
-- hooks:
-  - id: check-yaml
-  - id: end-of-file-fixer
-  - id: trailing-whitespace
-  repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v4.4.0
-
-- repo: https://github.com/astral-sh/uv-pre-commit
-  rev: 0.5.5
-  hooks:
-    - id: uv-lock
-
-- hooks:
-  - entry: uv run ruff check --fix
-    id: ruff
-    language: system
-    name: ruff_lint
-    types:
-    - python
-  repo: local
-
-- hooks:
-  - entry: uv run ruff format .
-    id: ruff
-    language: system
-    name: ruff_format
-    types:
-    - python
-  repo: local
-
-- repo: https://github.com/pre-commit/mirrors-mypy
-  rev: v1.13.0
-  hooks:
-    - id: mypy
-      args:
-        - --explicit-package-bases
+  - repo: local
+    hooks:
+      - id: uv_lock
+        name: Ensure dependency lock files are up-to-date
+        entry: uv lock
+        language: system
+        types:
+          - python
+      - id: ruff_lint
+        name: Lint Python code using Ruff
+        entry: uv run ruff check --fix
+        language: system
+        types:
+          - python
+      - id: ruff_format
+        name: Format Python code using Ruff
+        entry: uv run ruff format .
+        language: system
+        types:
+          - python
+      - id: mypy
+        name: Perform static type checking using MyPy
+        entry: uv run mypy --explicit-package-bases
+        language: system
+        types:
+          - python
