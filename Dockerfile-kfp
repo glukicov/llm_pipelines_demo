@@ -25,7 +25,6 @@ COPY uv.lock pyproject.toml README.md ./
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen --no-dev --no-install-project
 
-
 FROM base AS local
 # Use staged build to only do this locally: inject user's ACCESS_TOKEN into json file
 ARG ADC

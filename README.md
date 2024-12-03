@@ -23,7 +23,7 @@ and activate the virtual environment
 source .venv/bin/activate
 ```
 
-## Google Cloud
+## Google Cloud ☁️
 If you haven't already, [create a Google Cloud account and project](https://console.cloud.google.com/getting-started), 
 then [install the Google Cloud SDK](https://cloud.google.com/sdk/docs/install) `gcloud`, and authenticate with GCP:
 ```shell
