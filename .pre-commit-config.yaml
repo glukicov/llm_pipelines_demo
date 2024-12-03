@@ -1,0 +1,38 @@
+repos:
+
+- hooks:
+  - id: check-yaml
+  - id: end-of-file-fixer
+  - id: trailing-whitespace
+  repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.4.0
+
+- repo: https://github.com/astral-sh/uv-pre-commit
+  rev: 0.5.5
+  hooks:
+    - id: uv-lock
+
+- hooks:
+  - entry: uv run ruff check --fix
+    id: ruff
+    language: system
+    name: ruff_lint
+    types:
+    - python
+  repo: local
+
+- hooks:
+  - entry: uv run ruff format .
+    id: ruff
+    language: system
+    name: ruff_format
+    types:
+    - python
+  repo: local
+
+- repo: https://github.com/pre-commit/mirrors-mypy
+  rev: v1.13.0
+  hooks:
+    - id: mypy
+      args:
+        - --explicit-package-bases
