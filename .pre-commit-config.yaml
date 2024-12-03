@@ -21,23 +21,23 @@ repos:
         name: Ensure dependency lock files are up-to-date
         entry: uv lock
         language: system
-        types:
-          - python
+        types: [python]
+        pass_filenames: false
       - id: ruff_lint
         name: Lint Python code using Ruff
         entry: uv run ruff check --fix
         language: system
-        types:
-          - python
+        types: [python]
+        pass_filenames: false
       - id: ruff_format
         name: Format Python code using Ruff
         entry: uv run ruff format .
         language: system
-        types:
-          - python
+        types: [python]
+        pass_filenames: false
       - id: mypy
         name: Perform static type checking using MyPy
-        entry: uv run mypy --explicit-package-bases
+        entry: uv run mypy . --explicit-package-bases
         language: system
-        types:
-          - python
+        types: [python]
+        pass_filenames: false

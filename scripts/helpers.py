@@ -10,10 +10,13 @@ from google.auth.transport.requests import Request
 
 GCP_ADC_ERROR_MSG: str = "Your GCP credentials are not valid. Re-authenticate with: gcloud auth login --update-adc"
 
+
 def get_adc() -> str | None:
     """Get the user's Application Default Credentials (ADC)."""
     try:
-        file_path = Path.expanduser(Path("~/.config/gcloud/application_default_credentials.json"))
+        file_path = Path.expanduser(
+            Path("~/.config/gcloud/application_default_credentials.json")
+        )
         with Path.open(file_path) as file:
             adc = file.read()
 
@@ -55,6 +58,7 @@ def check_if_adc_valid() -> bool | None:
 
 def require_valid_gcp_adc(func):
     """Decorator to check if the user's GCP ADC are valid."""
+
     @wraps(func)
     def wrapper(*args, **kwargs):
         if check_if_adc_valid():

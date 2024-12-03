@@ -42,11 +42,17 @@ def demo_pipeline():
 
 
 if __name__ == "__main__":
-    def main(local: bool = typer.Option(True, help="Run the pipeline locally instead of on Vertex AI")):
-        run_pipeline_on_vertex_or_locally(pipeline_function=demo_pipeline,
-                                          params=job_params,
-                                          constants=job_constants,
-                                          local=local)
 
+    def main(
+        local: bool = typer.Option(
+            True, help="Run the pipeline locally instead of on Vertex AI"
+        ),
+    ):
+        run_pipeline_on_vertex_or_locally(
+            pipeline_function=demo_pipeline,
+            params=job_params,
+            constants=job_constants,
+            local=local,
+        )
 
     typer.run(main)

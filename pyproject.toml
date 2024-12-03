@@ -22,6 +22,14 @@ dev = [
 [tool.uv]
 package = true
 
+[[tool.mypy.overrides]]
+module = "google.cloud.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "kfp.*"
+ignore_missing_imports = true
+
 [project.scripts]
 build-local = "scripts.cli:build_container"
 
