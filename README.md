@@ -1,4 +1,4 @@
-# LLM pipelines demo 
+# LLM pipelines demo
 
 Demo of local and remote pipelines for calling and evaluating LLMs using Kubeflow and Vertex AI.
 
@@ -6,7 +6,7 @@ Demo of local and remote pipelines for calling and evaluating LLMs using Kubeflo
 
 👉 This repo is a companion to this blog post [medium.com/p/1b688dcebee5/edit](medium.com/p/1b688dcebee5/edit)
 
-# Setup 
+# Setup
 
 Install `uv`: https://docs.astral.sh/uv/getting-started/installation/
 
@@ -14,7 +14,7 @@ Download Python `3.12.7`:
 ```shell
 uv python install 3.12.7
 ```
-update the project's environment 
+update the project's environment
 ```shell
 uv sync
 ```
@@ -24,15 +24,15 @@ source .venv/bin/activate
 ```
 
 ## Google Cloud ☁️
-If you haven't already, [create a Google Cloud account and project](https://console.cloud.google.com/getting-started), 
+If you haven't already, [create a Google Cloud account and project](https://console.cloud.google.com/getting-started),
 then [install the Google Cloud SDK](https://cloud.google.com/sdk/docs/install) `gcloud`, and authenticate with GCP:
 ```shell
 gcloud auth login --update-adc
 ```
 
-- Navigate to, and click to enable any necessary APIs, in [Vertex AI Pipelines](https://console.cloud.google.com/vertex-ai/pipelines). 
+- Navigate to, and click to enable any necessary APIs, in [Vertex AI Pipelines](https://console.cloud.google.com/vertex-ai/pipelines).
 
-- Then in the IAM, [create a new service account (SA)](https://console.cloud.google.com/iam-admin/serviceaccounts) (e.g. `demo-sa`) with the following roles: 
+- Then in the IAM, [create a new service account (SA)](https://console.cloud.google.com/iam-admin/serviceaccounts) (e.g. `demo-sa`) with the following roles:
 ```
 Artifact Registry Reader
 Cloud Build Editor
@@ -53,13 +53,13 @@ repo_name = demo-repo
 
 
 # Local pipeline with Kubeflow
-Build a local container with 
+Build a local container with
 ```shell
 build-local
 ```
-and trigger a local pipeline with 
+and trigger a local pipeline with
 ```shell
-python pipelines/demo.py
+python pipelines/demo.py --local
 ```
 
 The pipeline outputs are saved in `./local_outputs/`.
@@ -70,8 +70,7 @@ The pipeline outputs are saved in `./local_outputs/`.
 ## Experiment tracking
 
 # Extending your pipeline
-The next steps are to extend your pipeline with: 
-- BQ: 
+The next steps are to extend your pipeline with:
+- BQ:
 - LLM call example from OIA
 - Accuracy evaluation
-

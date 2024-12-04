@@ -45,7 +45,7 @@ if __name__ == "__main__":
 
     def main(
         local: bool = typer.Option(
-            True, help="Run the pipeline locally instead of on Vertex AI"
+            False, help="Run the pipeline locally instead of on Vertex AI"
         ),
     ):
         run_pipeline_on_vertex_or_locally(

@@ -25,7 +25,7 @@ repos:
         pass_filenames: false
       - id: ruff_lint
         name: Lint Python code using Ruff
-        entry: uv run ruff check --fix
+        entry: uv run ruff check --fix .
         language: system
         types: [python]
         pass_filenames: false
