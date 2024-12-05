@@ -1,6 +1,6 @@
 # LLM pipelines demo
 
-Demo of local and remote pipelines for calling and evaluating LLMs using Kubeflow and Vertex AI.
+End-to-end local and remote pipelines with Kubeflow and Vertex AI.
 
 <img src="docs/imgs/demo.png" width=500cm>
 
@@ -8,9 +8,7 @@ Demo of local and remote pipelines for calling and evaluating LLMs using Kubeflo
 
 # Setup
 
-Install `uv`: https://docs.astral.sh/uv/getting-started/installation/
-
-Download Python `3.12.7`:
+First, [**install uv**](https://docs.astral.sh/uv/getting-started/installation/), then download Python `3.12.7`:
 ```shell
 uv python install 3.12.7
 ```
@@ -23,7 +21,7 @@ and activate the virtual environment
 source .venv/bin/activate
 ```
 
-## Google Cloud ☁️
+### Google Cloud ☁️
 If you haven't already, [create a Google Cloud account and project](https://console.cloud.google.com/getting-started),
 then [install the Google Cloud SDK](https://cloud.google.com/sdk/docs/install) `gcloud`, and authenticate with GCP:
 ```shell
@@ -32,7 +30,7 @@ gcloud auth login --update-adc
 
 - Navigate to, and click to enable any necessary APIs, in [Vertex AI Pipelines](https://console.cloud.google.com/vertex-ai/pipelines).
 
-- Then in the IAM, [create a new service account (SA)](https://console.cloud.google.com/iam-admin/serviceaccounts) (e.g. `demo-sa`) with the following roles:
+- Then in the IAM, [create a new service account (SA)](https://console.cloud.google.com/iam-admin/serviceaccounts) `demo-sa` with the following roles:
 ```
 Artifact Registry Reader
 Cloud Build Editor
@@ -50,6 +48,8 @@ sa_name = demo-sa
 repo_name = demo-repo
 ```
 
+### Docker
+Ensure you have [**Docker Desktop**](https://www.docker.com/products/docker-desktop/) installed and running.
 
 
 # Local pipeline with Kubeflow
@@ -62,7 +62,12 @@ and trigger a local pipeline with
 python pipelines/demo.py --local
 ```
 
-The pipeline outputs are saved in `./local_outputs/`.
+The pipeline outputs are saved in `./local_outputs/`, and you should see the following output in your terminal:
+```shell
+metadata={'accuracy': 1.0}
+----------------------------------------------------
+INFO - Pipeline 'demo' finished with status SUCCESS
+```
 
 # Remote pipeline on Vertex AI
 
