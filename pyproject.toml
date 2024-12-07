@@ -15,6 +15,7 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "google-cloud-aiplatform[metadata]>=1.73.0",
     "mypy>=1.13.0",
     "pytest>=8.3.4",
     "ruff>=0.7.4",
@@ -36,6 +37,7 @@ build-local = "scripts.cli:build_container_local"
 build-remote = "scripts.cli:build_container_remote"
 run-local = "scripts.cli:run_pipeline_local"
 run-remote = "scripts.cli:run_pipeline_remote"
+fetch-metrics = "scripts.cli:fetch_metrics"
 
 [build-system]
 requires = ["hatchling"]

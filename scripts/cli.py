@@ -4,7 +4,9 @@ from subprocess import CalledProcessError, run
 import typer
 
 from pipelines.demo import job_constants
+from pipelines.utils import job_params
 from scripts.helpers import get_adc, require_valid_gcp_adc, update_config
+from google.cloud import aiplatform
 
 
 @require_valid_gcp_adc
@@ -93,3 +95,17 @@ def run_pipeline_local() -> None:
 def run_pipeline_remote() -> None:
     """Run a Kubeflow pipeline remotely 🚀."""
     run_pipeline(local=False)
+
+
+@require_valid_gcp_adc
+def fetch_metrics(
+    experiment_name: str = job_params.experiment_name,
+    project_id: str = job_constants.GCP_PROJECT,
+    region: str = job_constants.REGION,
+) -> None:
+    """Fetch metrics from a Vertex AI experiment."""
+    aiplatform.init(project=project_id, location=region)
+    experiment = aiplatform.Experiment(experiment_name)
+    experiment_df = experiment.get_data_frame()
+    results = experiment_df[["experiment_name", "metric.accuracy"]]
+    logging.info(results)

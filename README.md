@@ -1,8 +1,9 @@
 # LLM pipelines demo
 
 End-to-end local and remote pipelines with Kubeflow and Vertex AI.
-
-<img src="docs/imgs/demo.png" width=500cm>
+<p align="center">
+<img src="docs/imgs/demo.png" width=500>
+</p>
 
 👉 This repo is a companion to this blog post [medium.com/p/1b688dcebee5/edit](medium.com/p/1b688dcebee5/edit)
 
@@ -79,13 +80,32 @@ and trigger a remote pipeline with
 ```shell
 run-remote
 ```
-and *CMD+click* on the link in your terminal (`View Pipeline Job:`) to view the pipeline in the Vertex AI console.
+and *CMD+click* on the link in your terminal (`View Pipeline Job:`) to view the pipeline in the Vertex AI console:
+
+<p align="center">
+<img src="docs/imgs/pipeline.png" width=300>
+</p>
+
 
 ## Experiment tracking
+The contents of `metrics_outoputs` are logged into Vertex AI's [Experiment Tracking](https://console.cloud.google.com/vertex-ai/experiments) as part of our `demo-experiment`, such that we can  access `accuracy` value for multiple pipelines:
 
-# Extending your pipeline
-The next steps are to extend your pipeline with:
-- BQ:
-- LLM call example from OIA
-- Accuracy evaluation
-- yaml file with PyDantic
+<p align="center">
+<img src="docs/imgs/metrics.png" width=300>
+</p>
+
+or programmatically
+```shell
+fetch-metrics
+```
+```shell
+0  gpt5 0.8
+1  gpt6 0.9
+```
+
+# Extending our pipeline
+The next steps are to extend our pipeline components from a demo to a fully-fledged LLM-cruncher 😎:
+- `get_data`: [Fetch data (e.g. prompts) from BigQuery](https://cloud.google.com/python/docs/reference/bigquery/latest)
+- `call_llm`: [Make a call to gpt-4o](https://platform.openai.com/docs/guides/text-generation)
+- `evaluate_results`: [Getting Started with OpenAI Evals](https://cookbook.openai.com/examples/evaluation/getting_started_with_openai_evals)
+- Configuration for pipeline parameters: [use Pydantic to load and validate your config.yaml file](https://docs.pydantic.dev/latest/api/pydantic_settings/#pydantic_settings.YamlConfigSettingsSource)
