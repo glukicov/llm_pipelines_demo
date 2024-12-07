@@ -60,7 +60,7 @@ Build a local container with
 ```shell
 build-local
 ```
-and trigger a local pipeline with
+then trigger a local pipeline with
 ```shell
 run-local
 ```
@@ -81,7 +81,7 @@ and trigger a remote pipeline with
 ```shell
 run-remote
 ```
-and *CMD+click* on the link in your terminal (`View Pipeline Job:`) to view the pipeline in the Vertex AI console:
+then *CMD+click* on the link in your terminal (`View Pipeline Job:`) to view the pipeline in the Vertex AI console:
 
 <p align="center">
 <img src="docs/imgs/pipeline.png" width=300>
@@ -89,13 +89,13 @@ and *CMD+click* on the link in your terminal (`View Pipeline Job:`) to view the 
 
 
 ## Experiment tracking
-The contents of `metrics_outoputs` are logged into Vertex AI's [Experiment Tracking](https://console.cloud.google.com/vertex-ai/experiments) as part of our `demo-experiment`, such that we can  access `accuracy` value for multiple pipelines:
+The contents of `metrics_output` are logged into Vertex AI's [Experiment Tracking](https://console.cloud.google.com/vertex-ai/experiments) as part of our `demo-experiment`, such that we can compare `accuracy` values for multiple pipelines side-by-side in the console:
 
 <p align="center">
 <img src="docs/imgs/metrics.png" width=300>
 </p>
 
-or programmatically
+or programmatically:
 ```shell
 fetch-metrics
 ```
