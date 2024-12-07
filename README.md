@@ -100,8 +100,8 @@ or programmatically:
 fetch-metrics
 ```
 ```shell
-0  gpt5 0.8
-1  gpt6 0.9
+0  gpt6 0.9
+1  gpt5 0.8
 ```
 
 # Extending our pipeline
