@@ -26,7 +26,7 @@ def call_llm(model_name: str, prompt: str) -> str:
 
 @component(base_image=job_constants.BASE_IMAGE)
 def evaluate_results(results: str, metrics_output: Output[Metrics]):
-    metrics_output.metadata = {"llm": "gpt5", "accuracy": 0.8}
+    metrics_output.metadata = {"accuracy": float(results == "results")}
 
 
 @pipeline(name=job_params.pipeline_name)
