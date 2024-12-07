@@ -1,5 +1,6 @@
 compiled/
 local_outputs/
+pipeline.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

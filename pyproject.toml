@@ -32,7 +32,10 @@ module = "kfp.*"
 ignore_missing_imports = true
 
 [project.scripts]
-build-local = "scripts.cli:build_container"
+build-local = "scripts.cli:build_container_local"
+build-remote = "scripts.cli:build_container_remote"
+run-local = "scripts.cli:run_pipeline_local"
+run-remote = "scripts.cli:run_pipeline_remote"
 
 [build-system]
 requires = ["hatchling"]

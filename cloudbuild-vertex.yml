@@ -7,19 +7,19 @@ steps:
       - '--file'
       - 'Dockerfile-kfp'
       - '--tag'
-      - 'europe-west2-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/kfp-component:${_USER}-latest'
+      - '${_IMAGE}'
       - '--target'
       - 'base'
       - '--build-arg'
       - 'BUILDKIT_INLINE_CACHE=1'
       - '--cache-from'
-      - 'europe-west2-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/kfp-component:${_USER}-latest'
+      - '${_IMAGE}'
       - '.'
     env:
       - 'DOCKER_BUILDKIT=1'
       - 'COMPOSE_DOCKER_CLI_BUILD=1'
 
-images: ['europe-west2-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/kfp-component:${_USER}-latest']
+images: ['${_IMAGE}']
 
 options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET

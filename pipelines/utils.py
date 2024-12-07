@@ -12,6 +12,7 @@ from kfp import local as kfp_local
 
 logging.basicConfig(level=logging.INFO)
 CURRENT_DIR = Path(__file__).parent
+ROOT_DIR = Path(__file__).parent.parent
 
 
 def get_value_from_config(
@@ -39,11 +40,15 @@ class JobConstants:
     """Store job constants."""
 
     USER: str = str(os.getenv("USER")).lower()
-    LOCATION: str = "us-central1"
+    REGION: str = "us-central1"
     GCP_PROJECT: str = get_value_from_config(option="gcp_project")
     BASE_IMAGE: str = get_value_from_config(option="base_image")
     REPO_NAME: str = get_value_from_config(option="repo_name")
     SERVICE_ACCOUNT: str = f"{get_value_from_config(option="sa_name")}@{GCP_PROJECT}.iam.gserviceaccount.com"
+    REMOTE_BASE_IMAGE: str = (
+        f"{REGION}-docker.pkg.dev/{GCP_PROJECT}/{REPO_NAME}/kfp-component:{USER}-latest"
+    )
+    LOCAL_BASE_IMAGE: str = "vertex-component-local:latest"
 
 
 job_params = JobParams()
@@ -79,7 +84,7 @@ def compile_and_run_pipeline_on_vertex(
         template_path="pipeline.json",
         job_id=f"{params.pipeline_name}-{constants.USER}-{get_date_time_now()}",
         enable_caching=params.enable_caching,
-        location=constants.LOCATION,
+        location=constants.REGION,
         project=constants.GCP_PROJECT,
     )
     job.submit(

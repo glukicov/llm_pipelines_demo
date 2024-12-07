@@ -1,0 +1,50 @@
+# IDE/Editor configurations
+.idea
+.vscode
+.codebuddy
+
+# Documentation and reports
+docs
+htmlcov
+local_outputs
+
+# Tests and coverage
+tests
+__pycache__
+*.py[cod]
+*.cover
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+
+# Build artifacts
+dist
+
+# Logs and temporary files
+*.log
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtual environment
+.Python
+env
+.tox
+
+# Version control
+.git
+.github
+
+# Static type checking and testing
+.mypy_cache
+.pytest_cache
+.hypothesis
+
+# Exclude Docker-related files (optional, if not needed in the image)
+Dockerfile
+.dockerignore
+
+# Exclude environment files (if sensitive data is present)
+.env
+.env.*

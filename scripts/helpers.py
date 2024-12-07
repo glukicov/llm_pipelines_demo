@@ -1,3 +1,4 @@
+import configparser
 import logging
 from functools import wraps
 from pathlib import Path
@@ -8,7 +9,12 @@ import typer
 from google.auth import default
 from google.auth.transport.requests import Request
 
+from pipelines.utils import ROOT_DIR, JobConstants
+
 GCP_ADC_ERROR_MSG: str = "Your GCP credentials are not valid. Re-authenticate with: gcloud auth login --update-adc"
+CONFIG_FILE_PATH: Path = Path(ROOT_DIR, "pipelines/config.cfg")
+
+job_constants = JobConstants()
 
 
 def get_adc() -> str | None:
@@ -67,3 +73,27 @@ def require_valid_gcp_adc(func):
             return None
 
     return wrapper
+
+
+def update_config(local_run: bool = False, config_file_path: Path = CONFIG_FILE_PATH):
+    """Automatically update the configuration before running the pipeline.️"""
+    config = configparser.ConfigParser()
+    config.read(config_file_path)
+    if not config.has_section("job_constants"):
+        logging.error(
+            f"No job_constants section found in the configuration file: {config_file_path}"
+        )
+        raise typer.Exit()
+
+    if local_run:
+        config["job_constants"]["base_image"] = job_constants.LOCAL_BASE_IMAGE
+    else:
+        config["job_constants"]["base_image"] = job_constants.REMOTE_BASE_IMAGE
+
+    try:
+        with Path.open(Path(config_file_path), mode="w") as config_file:
+            config.write(config_file)
+
+    except Exception:
+        logging.error(f"Failed to update the configuration file: {config_file_path}")
+        raise typer.Exit()

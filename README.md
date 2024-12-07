@@ -32,9 +32,10 @@ gcloud auth login --update-adc
 
 - Then in the IAM, [create a new service account (SA)](https://console.cloud.google.com/iam-admin/serviceaccounts) `demo-sa` with the following roles:
 ```
-Artifact Registry Reader
+Artifact Registry Writer
 Cloud Build Editor
-Storage Object User
+Storage Admin
+Storage Object Admin
 Vertex AI User
 ````
 
@@ -48,7 +49,7 @@ sa_name = demo-sa
 repo_name = demo-repo
 ```
 
-### Docker
+### Docker 📦
 Ensure you have [**Docker Desktop**](https://www.docker.com/products/docker-desktop/) installed and running.
 
 
@@ -59,7 +60,7 @@ build-local
 ```
 and trigger a local pipeline with
 ```shell
-python pipelines/demo.py --local
+run-local
 ```
 
 The pipeline outputs are saved in `./local_outputs/`, and you should see the following output in your terminal:
@@ -70,7 +71,15 @@ INFO - Pipeline 'demo' finished with status SUCCESS
 ```
 
 # Remote pipeline on Vertex AI
-
+Build a remote container with Cloud Build (if prompted, enable the API in your terminal):
+```shell
+build-remote
+```
+and trigger a remote pipeline with
+```shell
+run-remote
+```
+and *CMD+click* on the link in your terminal (`View Pipeline Job:`) to view the pipeline in the Vertex AI console.
 
 ## Experiment tracking
 
@@ -79,3 +88,4 @@ The next steps are to extend your pipeline with:
 - BQ:
 - LLM call example from OIA
 - Accuracy evaluation
+- yaml file with PyDantic
