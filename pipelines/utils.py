@@ -48,7 +48,7 @@ class JobConstants:
     REMOTE_BASE_IMAGE: str = (
         f"{REGION}-docker.pkg.dev/{GCP_PROJECT}/{REPO_NAME}/kfp-component:{USER}-latest"
     )
-    LOCAL_BASE_IMAGE: str = "vertex-component-local:latest"
+    LOCAL_BASE_IMAGE: str = "kfp-component-local:latest"
 
 
 job_params = JobParams()
