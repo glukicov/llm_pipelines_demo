@@ -1,4 +1,5 @@
 # LLM pipelines demo
+<img src="https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue">
 
 End-to-end local and remote pipelines with Kubeflow and Vertex AI.
 <p align="center">
