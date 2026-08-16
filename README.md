@@ -6,6 +6,8 @@ End-to-end local and remote pipelines with Kubeflow and Vertex AI.
 <img src="docs/imgs/demo.png" width=500>
 </p>
 
+https://github.com/user-attachments/assets/49cf68f4-693b-4eda-b063-8b996666bea4
+
 👉 This repo is a companion to [this blog post](https://medium.com/@lukicov/ml-pipelines-in-the-age-of-llms-from-local-containers-to-cloud-experiments-1b688dcebee5).
 
 # Setup
